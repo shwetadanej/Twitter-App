@@ -2,8 +2,10 @@
 
 An Application for Twitter Authentication
 
-It Displays Home Timeline Tweets as well as User Timeline Tweets
+It Displays "Home Timeline Tweets" as well as "User Timeline Tweets"
 
-Searching and Displaing Followers
+Displaying Followers
+
+Searching using autocomplete
 
 Download Tweets 
