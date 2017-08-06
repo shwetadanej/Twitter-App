@@ -1,0 +1,121 @@
+body {
+  font-family: 'Open Sans', sans-serif;
+  font-size:13px;
+  background:#f5f5f5;
+  margin:0px;
+}
+a {
+  text-decoration:none;
+}
+#wrapper {
+  color:white;
+  margin:10px;
+}
+#wrapper .item{
+  padding:12px;
+  font-size:11px;
+  border-radius:5px;
+  float:left;
+  margin:0px 10px 10px 0px;
+  background:grey;
+  text-align:center;
+  min-width:90px;
+  min-height:130px;
+  border-bottom:10px solid rgba(0,0,0,.15);
+  text-transform:uppercase;
+}
+#wrapper .item.dribbble{ background:#ea4c89;}
+#wrapper .item.facebook{ background:#3a5795;}
+#wrapper .item.instagram,#wrapper .item.instagram_sandbox{ background:#517fa4;}
+#wrapper .item.google{ background:#dd4b39;}
+#wrapper .item.youtube{ background:#b31217;}
+#wrapper .item.pinterest { background:#cb2027;}
+#wrapper .item.soundcloud{background:#f50}
+#wrapper .item.vimeo { background:#45bbff;}
+#wrapper .item.twitter {background:#00a5e5;}
+#wrapper .item.behance {background: #0079ff;}
+#wrapper .item.vine {background: #00a478;}
+#wrapper .item.vk {background: #507299;}
+#wrapper .item.foursquare {background: #2d5be3;}
+#wrapper .item.linkedin {background: #0077b5;}
+#wrapper .item.tumblr {background: #36465d;}
+#wrapper .item.twitch {background: #7d5bbe;}
+
+#wrapper .item i,#wrapper .item .count { 
+  padding: 10px;
+  display:block;
+  font-size:30px;
+}
+#wrapper .item .count { 
+  font-weight:600; 
+}
+#total, #total_k {
+  color:initial;
+  padding: 10px;
+  font-weight:bold;
+  font-size:20px;
+}
+#total:before, #total_k:before  {
+  content:'Total Fans: ';
+  font-weight:normal;
+}
+#wrapper .item {
+  color:#fff; 
+}
+/*Rounded Counters*/
+#wrapper.rounded {
+  margin-top:20px;
+}
+#wrapper.rounded .item {
+  min-width:0;
+  min-height:0;
+  width:50px;
+  height:50px;
+  position:relative;
+  margin-right:20px;
+  margin-bottom:20px;
+  border-radius:50%;
+  border:none;
+}
+#wrapper.rounded .item .count{ 
+  position:absolute;
+  top:-10px;
+  right:-10px;
+  background:inherit;
+  border:solid 2px #fff;
+  border-radius:30px;
+  height:15px;
+  line-height:15px;
+}
+#wrapper.rounded .item .count{
+  font-size:11px!important;
+}
+/*Square Counters*/
+#wrapper.square {
+  max-width:870px;
+  margin: 0 13%;
+}
+#wrapper.square .item {
+  width:150px;
+  height:185px;
+  border-radius:0px;
+  margin:1%;
+}
+#wrapper.square .item .count{ 
+  padding: 10px;
+  display:block;
+  font-size:16px;
+  font-weight:600; 
+  line-height: 25px;
+}
+#follower_img{
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+}
+.task_title{
+    color: #00a5e5;
+    font-weight: bold;
+    text-align: center;
+    vertical-align: middle;
+}
