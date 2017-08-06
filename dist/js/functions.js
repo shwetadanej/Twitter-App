@@ -112,15 +112,15 @@ function getUserTweets(userScreenName) {
                 li += "<tr><td>" + element.date_time + "</td></tr>";
 
                 li += "<tr><td>";
-                li += "<a href='https://twitter.com/intent/tweet/?in_reply_to='" + element.tweet_id + " target='_blank'>";
+                li += "<a href='https://twitter.com/intent/tweet/?in_reply_to=" + element.tweet_id + "' target='_blank'>";
                 li += "<img src='dist/images/reply.png' alt='Reply' title='Reply' style='float: left;'/> ";
                 li += "<p class='tweet_options' > </p></a>";
 
-                li += "<a href='https://twitter.com/intent/retweet?tweet_id='" + element.tweet_id + " target='_blank'>";
+                li += "<a href='https://twitter.com/intent/retweet?tweet_id=" + element.tweet_id + "' target='_blank'>";
                 li += "<img src='dist/images/retweet.png' alt='Retweet' title='Retweet' style='float: left;'/> ";
                 li += "<p class='tweet_options'>" + element.retweet_count + "</p></a>";
 
-                li += "<a href='https://twitter.com/intent/favorite?tweet_id='" + element.tweet_id + " target='_blank'>";
+                li += "<a href='https://twitter.com/intent/favorite?tweet_id=" + element.tweet_id + "' target='_blank'>";
                 li += "<img src='dist/images/like.png' alt='Like' title='Like' style='float: left;'/> ";
                 li += "<p class='tweet_options' > " + element.likes_count + "</p></a>";
                 li += "</td></tr></table></li>";
