@@ -6,6 +6,6 @@
 
 # Displaying Followers
 
-# Searching using autocomplete
+# Searching of followers using autocomplete
 
 # Download Tweets 
