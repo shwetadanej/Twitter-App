@@ -110,7 +110,6 @@ function getUserTweets(userScreenName) {
                     li += "</td></tr>";
                 }
                 li += "<tr><td>" + element.date_time + "</td></tr>";
-
                 li += "<tr><td>";
                 li += "<a href='https://twitter.com/intent/tweet/?in_reply_to=" + element.tweet_id + "' target='_blank'>";
                 li += "<img src='dist/images/reply.png' alt='Reply' title='Reply' style='float: left;'/> ";
@@ -128,6 +127,5 @@ function getUserTweets(userScreenName) {
             });
             $slider.reloadSlider();
         }
-
     });
 }
