@@ -1,11 +1,11 @@
 # Twitter-App
 
-# An Application for Twitter Authentication
+### Twitter Authentication
 
-# It Displays "Home Timeline Tweets" as well as "User Timeline Tweets"
+### It Displays "Home Timeline Tweets" as well as "User Timeline Tweets"
 
-# Displaying Followers
+### Displaying Followers
 
-# Searching of followers using autocomplete
+### Searching of followers using autocomplete
 
-# Download Tweets 
+### Download Tweets 
