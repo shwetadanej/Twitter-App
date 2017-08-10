@@ -1,9 +1,13 @@
 # Twitter-App
 
+***
+
 ![Twitter-App Logo](/dist/images/if_twitter_313634.png)
 
 Documentation
--------------
+
+***
+
 * [An Introduction](https://github.com/shwetadanej/Twitter-App)
 * [Authentication](https://github.com/shwetadanej/Twitter-App/blob/master/callback.php)
 * [Home Tweets](https://github.com/shwetadanej/Twitter-App/blob/master/homeTweets.php)
@@ -13,7 +17,9 @@ Documentation
 * [Download Tweets](https://github.com/shwetadanej/Twitter-App/blob/master/downloadTweets.php)
 
 Examples :
-------------
+
+***
+
 1. [First Create a New App for twitter](https://apps.twitter.com/)  
 2. Import Twitter Api [https://github.com/abraham/twitteroauth](https://github.com/abraham/twitteroauth)
 3. [Authentication Example](https://github.com/sohaibilyas/twitter-api-php)
