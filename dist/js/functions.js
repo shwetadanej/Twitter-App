@@ -2,28 +2,45 @@ var $slider = $('.bxslider').bxSlider();
 $(document).ready(function () {
     getHomeTweets();
 
-    $("#searchTxt").keyup(function () {
-        var str = $("#searchTxt").val();
-        $.ajax({
-            type: "POST",
-            url: 'search.php',
-            data: {'q': str},
-            success: function (response) {
-                var data = $.parseJSON(response);
-                if (str != "") {
-                    $("#followerList").css('display', 'block');
+    $("#searchPublic").autocomplete({
+        source: function (request, response) {
+            $.ajax({
+                url: 'publicSearch.php',
+                type: 'post',
+                data: {searchText: request.term},
+                dataType: "json",
+                success: function (result) {
+                    response($.map(result, function (item)
+                    {
+                        return{
+                            label: item.screen_name,
+                            value: item.screen_name,
+                            avatar: item.profile_image_url
+                        }
+                    }));
                 }
-                var li = "";
-                $.each(data, function (index, element) {
-                    var nm = '"' + element.screen_name + '"';
-                    li = li + "<a onclick='getUserTweets(" + nm + ")'><li class='f_li'>" + element.name + "</li></a>";
-                });
-                $("#f_ul").html(li);
-                $("#f_ul").show();
+            });
+        },
+        minLength: 2,
+        select: function (event, ui) {
+            $("#searchPublic").val(ui.item.value);
+            var user_name = ui.item.value;
+            getUserTweets(user_name);
+            return false;
+        },
+        focus: function (event, ui) {
+            $(".ui-helper-hidden-accessible").hide();
+            event.preventDefault();
+        }
+    }).autocomplete("instance")._renderItem = function (ul, item) {
+        var inner_html = '<img style="height:25px;width:25px;border-radius:50%;margin-right:10px" src="' + item.avatar + '">' + item.label;
+        return $("<li></li>")
+                .data("item.autocomplete", item)
+                .append(inner_html)
+                .appendTo(ul);
+    };
 
-            }
-        });
-    });
+
 });
 
 function getHomeTweets() {
@@ -31,7 +48,7 @@ function getHomeTweets() {
         type: "POST",
         url: 'homeTweets.php',
         success: function (data) {
-            var home_tweets = $.parseJSON(data);           
+            var home_tweets = $.parseJSON(data);
             $("#tweets_title").html("Recent Tweets");
             $.each(home_tweets, function (index, element) {
                 var li = "<li>";
@@ -55,16 +72,13 @@ function getHomeTweets() {
                     li += "</td></tr>";
                 }
                 li += "<tr><td>" + element.date_time + "</td></tr>";
-
                 li += "<tr><td>";
                 li += "<a href='https://twitter.com/intent/tweet/?in_reply_to=" + element.tweet_id + "' target='_blank'>";
                 li += "<img src='dist/images/reply.png' alt='Reply' title='Reply' style='float: left;'/> ";
                 li += "<p class='tweet_options' > </p></a>";
-
                 li += "<a href='https://twitter.com/intent/retweet?tweet_id=" + element.tweet_id + "' target='_blank'>";
                 li += "<img src='dist/images/retweet.png' alt='Retweet' title='Retweet' style='float: left;'/> ";
                 li += "<p class='tweet_options'>" + element.retweet_count + "</p></a>";
-
                 li += "<a href='https://twitter.com/intent/favorite?tweet_id=" + element.tweet_id + "' target='_blank'>";
                 li += "<img src='dist/images/like.png' alt='Like' title='Like' style='float: left;'/> ";
                 li += "<p class='tweet_options' > " + element.likes_count + "</p></a>";
@@ -79,7 +93,8 @@ function getHomeTweets() {
 function getUserTweets(userScreenName) {
     $('#searchTxt').val(userScreenName);
     $("#f_ul").hide();
-    console.log(userScreenName);
+    var dlink = '<a href="downloadTweets.php?uname=' + userScreenName + '"  id="download_link" target="_blank"><img src="dist/images/download_tweets.png" alt="Download Tweets" title="Download Tweets" style="float: right"/></a>';
+    $("#download_tweets").append(dlink);
     $.ajax({
         type: "POST",
         url: 'userTweets.php',
@@ -87,6 +102,7 @@ function getUserTweets(userScreenName) {
         success: function (data) {
             var user_tweets = $.parseJSON(data);
             $("#tweets_title").html("@" + userScreenName + "'s Tweets");
+            $("#download_tweets").css('display', 'block');
             $(".bxslider").empty();
             $.each(user_tweets, function (index, element) {
                 var li = "<li>";
@@ -114,11 +130,9 @@ function getUserTweets(userScreenName) {
                 li += "<a href='https://twitter.com/intent/tweet/?in_reply_to=" + element.tweet_id + "' target='_blank'>";
                 li += "<img src='dist/images/reply.png' alt='Reply' title='Reply' style='float: left;'/> ";
                 li += "<p class='tweet_options' > </p></a>";
-
                 li += "<a href='https://twitter.com/intent/retweet?tweet_id=" + element.tweet_id + "' target='_blank'>";
                 li += "<img src='dist/images/retweet.png' alt='Retweet' title='Retweet' style='float: left;'/> ";
                 li += "<p class='tweet_options'>" + element.retweet_count + "</p></a>";
-
                 li += "<a href='https://twitter.com/intent/favorite?tweet_id=" + element.tweet_id + "' target='_blank'>";
                 li += "<img src='dist/images/like.png' alt='Like' title='Like' style='float: left;'/> ";
                 li += "<p class='tweet_options' > " + element.likes_count + "</p></a>";

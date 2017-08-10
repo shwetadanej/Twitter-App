@@ -60,26 +60,28 @@ footer p {
 footer p a {
     color: #fff !important;
 }
-#f_ul{
-    width: 223px;
+.ui-autocomplete{
+    width: 205px !important;
     position: absolute;
     margin-left: -17.3%;
     margin-top: 1.4%;
     z-index: 1;
     list-style: none;
+    height: 185px !important;
+    overflow-y: scroll;
 }
-.f_li{
+.ui-menu-item{
     margin-left: -10%;
     background: #FFF;
-    border-bottom: #bbb9b9 1px solid;
-    border-left: #bbb9b9 1px solid;
-    border-right: #bbb9b9 1px solid;
-    border-radius: 5px;
     color: #1da1f2!important;
-    font-size: 15px;
-    line-height: 2.5;
+    font-size: 12px;
+    line-height: 2;
 }
-.f_li:hover{
-    font-size: 18px;
+.ui-menu-item:hover{
     cursor: pointer;
+    background: #FFF !important;
+    overflow-x: hidden !important;   
+}
+.ui-state-focus{
+    border: none !important;
 }

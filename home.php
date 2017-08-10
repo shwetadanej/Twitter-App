@@ -33,6 +33,7 @@ if (!isset($_SESSION['access_token'])) {
             <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600' rel='stylesheet' type='text/css'>
             <link rel='stylesheet prefetch' href='https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css'>
             <link href="dist/css/social_counters.css" rel="stylesheet" type="text/css"/>
+            <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
             <title>Home</title>
         </head>
 
@@ -42,16 +43,13 @@ if (!isset($_SESSION['access_token'])) {
                     <img src="<?php echo $user->profile_image_url; ?>" id="loggedinProfile" style="border-radius: 50%;"/>
                     <a href="#" class="navbar-brand" style="margin-right: 55%;"><?php echo "@" . $loggedIn_user; ?> </a>
 
-                    <form class="form-inline mt-2 mt-md-0" name="serachFrm"> 
-                        <input class="form-control mr-sm-2 ui-autocomplete-input" type="text" name="searchTxt" id="searchTxt" placeholder="Search Followers" >
-                        <div id="followerList" style="display: none;">
-                            <ul id="f_ul"> </ul>
-                        </div>  
+                    <form class="form-inline mt-2 mt-md-0" name="publicSearch"> 
+                        <input class="form-control mr-sm-2 ui-autocomplete-input" type="text" name="searchPublic" id="searchPublic" placeholder="Search Twitter" >
                     </form>
                     <a href='logout.php' class="navbar-brand" style="text-align: right;">
                         <img src="dist/images/logout.png" />
                     </a>
-                    
+
                 </div>
             </div>
             <div class="tweets text-muted">
@@ -60,6 +58,7 @@ if (!isset($_SESSION['access_token'])) {
                     <div class="row"> 
                         <div class="col-12">
                             <center><h3 class="task_title" id="tweets_title"></h3></center>
+                            <div id="download_tweets"></div>
                         </div>
                         <ul class="bxslider">
 
@@ -99,23 +98,25 @@ if (!isset($_SESSION['access_token'])) {
                     <div class="row"> 
                         <div class="col-12">
                             <h3 class="task_title">Download Tweets As</h3>
+                            <div class="col-12">
+                                <center>
+                                    <a class="btn btn-primary" href="downloadTweets.php?dType=json" role="button" target="_blank">JSON</a>
+                                    <a class="btn btn-primary" href="downloadTweets.php?dType=csv" role="button" target="_blank">CSV</a>
+                                </center> 
+                            </div>
                         </div>
-                        <div class="col-12">
-                            <center>
-                                <a class="btn btn-primary" href="downloadTweets.php?dType=json" role="button" target="_blank">JSON</a>
-                                <a class="btn btn-primary" href="downloadTweets.php?dType=csv" role="button" target="_blank">CSV</a>
-                            </center> 
-                        </div>
+
                         <br>
                         <br>
                     </div>
+
                 </div>
             </div>
 
             <footer>
                 <div class="container">
                     <p class="float-right">
-                        
+
                         <a href="#">Back to top</a>
                     </p>
                 </div>
