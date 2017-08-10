@@ -1,4 +1,4 @@
-#Twitter-App
+# Twitter-App
 
 ![Twitter-App Logo](/dist/images/if_twitter_313634.png)
 
@@ -15,27 +15,27 @@ Documentation
 Some Example
 ------------
 
-First, authenticate with your application credentials::
+First, authenticate with your application credentials:
 
 	from TwitterAPI import TwitterAPI
 	api = TwitterAPI(consumer_key, consumer_secret, access_token_key, access_token_secret)
 
-Home Tweets::
+Home Tweets:
 
 	$tweets = $connection->get('statuses/home_timeline', ['count' => 50, 'exclude_replies' => true, 'screen_name' => 'any name', 'include_rts' => false]);
 	print_r($tweets)
 
-User Tweets::
+User Tweets:
 
 	$tweets = $connection->get('statuses/user_timeline', ['count' => 50, 'exclude_replies' => true, 'screen_name' => 'any name', 'include_rts' => false]);    
 	print_r($tweets)
 
-Followers List::
+Followers List:
 
 	$followers_list = $connection->get('followers/list', ['screen_name' => $loggedIn_user,]);
   	print_r($followers_list)
 
-Download Tweets in diff formats::
+Download Tweets in diff formats:
 
 	Json :
 
