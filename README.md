@@ -1,4 +1,4 @@
-|LOGO| # Twitter-App
+![Twitter-App Logo](/dist/images/if_twitter_313634.png)#Twitter-App
 
 Documentation
 -------------
