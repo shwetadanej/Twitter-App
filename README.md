@@ -12,13 +12,14 @@ Documentation
 * [Search Public Users](https://github.com/shwetadanej/Twitter-App/blob/master/publicSearch.php)
 * [Download Tweets](https://github.com/shwetadanej/Twitter-App/blob/master/downloadTweets.php)
 
-Some Example
+Examples :
 ------------
-[First Create a New App for twitter](https://apps.twitter.com/)  
+1. [First Create a New App for twitter](https://apps.twitter.com/)  
+2. Import Twitter Api [https://github.com/abraham/twitteroauth](https://github.com/abraham/twitteroauth)
+3. [Authentication Example](https://github.com/sohaibilyas/twitter-api-php)
 
 Authenticate with your application credentials:
 	
-	from TwitterAPI import TwitterAPI
 	api = TwitterAPI(consumer_key, consumer_secret, access_token_key, access_token_secret)
 
 Home Tweets: [Check Here](https://dev.twitter.com/rest/reference/get/statuses/home_timeline)
