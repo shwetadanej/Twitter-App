@@ -73,8 +73,8 @@ if (!isset($_SESSION['access_token'])) {
         }
     }
 
-    
-    if (isset($_REQUEST['uname'])) {
+    $u_name = $_REQUEST['uname'];
+    if (isset($u_name)) {
         $tweets = $connection->get('statuses/user_timeline', ['count' => 200, 'exclude_replies' => true, 'screen_name' => $u_name, 'include_rts' => false]);
         $totalTweets[] = $tweets;
         $tweets_data = [];
