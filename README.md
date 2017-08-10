@@ -14,10 +14,10 @@ Documentation
 
 Some Example
 ------------
+[First Create a New App for twitter](https://apps.twitter.com/)  
 
-First, authenticate with your application credentials:
-
-	[First Create a New App for twitter](https://apps.twitter.com/)  
+Authenticate with your application credentials:
+	
 	from TwitterAPI import TwitterAPI
 	api = TwitterAPI(consumer_key, consumer_secret, access_token_key, access_token_secret)
 
