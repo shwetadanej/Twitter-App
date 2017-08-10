@@ -9,7 +9,7 @@
 * [Home Tweets with ajax call](https://github.com/shwetadanej/Twitter-App/blob/master/homeTweets.php)
 * [User Tweets with ajax call](https://github.com/shwetadanej/Twitter-App/blob/master/userTweets.php)
 * [Followers](https://github.com/shwetadanej/Twitter-App/blob/master/home.php)
-* [Search Public Users with ajax call](https://github.com/shwetadanej/Twitter-App/blob/master/publicSearch.php)
+* [Search Public Users (with ajax call and jQuery Autocomplete)](https://github.com/shwetadanej/Twitter-App/blob/master/publicSearch.php)
 * [Download Tweets](https://github.com/shwetadanej/Twitter-App/blob/master/downloadTweets.php)
 
 ## Examples :
