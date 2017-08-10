@@ -41,7 +41,7 @@ if (!isset($_SESSION['access_token'])) {
             <div class="navbar navbar-dark bg-dark">
                 <div class="container d-flex justify-content-between">
                     <img src="<?php echo $user->profile_image_url; ?>" id="loggedinProfile" style="border-radius: 50%;"/>
-                    <a href="#" class="navbar-brand" style="margin-right: 55%;"><?php echo "@" . $loggedIn_user; ?> </a>
+                    <a href="javascript:void(0);" class="navbar-brand" style="margin-right: 55%;"><?php echo "@" . $loggedIn_user; ?> </a>
 
                     <form class="form-inline mt-2 mt-md-0" name="publicSearch"> 
                         <input class="form-control mr-sm-2 ui-autocomplete-input" type="text" name="searchPublic" id="searchPublic" placeholder="Search Twitter" >
@@ -131,9 +131,9 @@ if (!isset($_SESSION['access_token'])) {
             <script src="dist/js/ie10-viewport-bug-workaround.js" type="text/javascript"></script>
             <script>
 
-                $(function () {
-                    Holder.addTheme("thumb", {background: "#55595c", foreground: "#eceeef", text: "Thumbnail"});
-                });
+                        $(function () {
+                            Holder.addTheme("thumb", {background: "#55595c", foreground: "#eceeef", text: "Thumbnail"});
+                        });
             </script>
             <script src="dist/js/functions.js" type="text/javascript"></script>
         </body>
