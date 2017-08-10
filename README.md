@@ -1,14 +1,15 @@
-![Twitter-App Logo](/dist/images/if_twitter_313634.png)#Twitter-App
+![Twitter-App Logo](/dist/images/if_twitter_313634.png)
+#Twitter-App
 
 Documentation
 -------------
-* `An Introduction <https://github.com/shwetadanej/Twitter-App>`_
-* `Authentication <https://github.com/shwetadanej/Twitter-App/blob/master/callback.php>`_
-* `Home Tweets <https://github.com/shwetadanej/Twitter-App/blob/master/homeTweets.php>`_
-* `User Tweets <https://github.com/shwetadanej/Twitter-App/blob/master/userTweets.php>`_
-* `Followers <https://github.com/shwetadanej/Twitter-App/blob/master/home.php>`_
-* `Search Public Users <https://github.com/shwetadanej/Twitter-App/blob/master/publicSearch.php>`_
-* `Download Tweets <https://github.com/shwetadanej/Twitter-App/blob/master/downloadTweets.php>`_
+* `An Introduction [Twitter-App](https://github.com/shwetadanej/Twitter-App>)`
+* `Authentication [Twitter-App](https://github.com/shwetadanej/Twitter-App/blob/master/callback.php)`
+* `Home Tweets [Twitter-App](https://github.com/shwetadanej/Twitter-App/blob/master/homeTweets.php)`
+* `User Tweets [Twitter-App](https://github.com/shwetadanej/Twitter-App/blob/master/userTweets.php)`
+* `Followers [Twitter-App](https://github.com/shwetadanej/Twitter-App/blob/master/home.php)`
+* `Search Public Users [Twitter-App](https://github.com/shwetadanej/Twitter-App/blob/master/publicSearch.php)`
+* `Download Tweets [Twitter-App](https://github.com/shwetadanej/Twitter-App/blob/master/downloadTweets.php)`
 
 Some Example
 ------------
