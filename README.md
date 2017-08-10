@@ -33,7 +33,7 @@ User Tweets::
 Followers List::
 
 	$followers_list = $connection->get('followers/list', ['screen_name' => $loggedIn_user,]);
-  print_r($followers_list)
+  	print_r($followers_list)
 
 Download Tweets in diff formats::
 
@@ -53,7 +53,8 @@ Download Tweets in diff formats::
         unlink('tweets.json');
         exit();
 
-  CSV :
+  
+	CSV :
 
         header('Content-Disposition: attachment; filename="tweets.csv";');
         header("Pragma: no-cache");
