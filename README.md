@@ -17,31 +17,27 @@ Some Example
 
 First, authenticate with your application credentials:
 
-[First Create a New App for twitter](https://apps.twitter.com/)  
+	[First Create a New App for twitter](https://apps.twitter.com/)  
 	from TwitterAPI import TwitterAPI
 	api = TwitterAPI(consumer_key, consumer_secret, access_token_key, access_token_secret)
 
-Home Tweets:
+Home Tweets: [Check Here](https://dev.twitter.com/rest/reference/get/statuses/home_timeline)
 
-[Check Here](https://dev.twitter.com/rest/reference/get/statuses/home_timeline)
 	$tweets = $connection->get('statuses/home_timeline', ['count' => 50, 'exclude_replies' => true, 'screen_name' => 'any name', 'include_rts' => false]);
 	print_r($tweets)
 
-User Tweets:
+User Tweets: [Check Here](https://dev.twitter.com/rest/reference/get/statuses/user_timeline)
 
-[Check Here](https://dev.twitter.com/rest/reference/get/statuses/user_timeline)
 	$tweets = $connection->get('statuses/user_timeline', ['count' => 50, 'exclude_replies' => true, 'screen_name' => 'any name', 'include_rts' => false]);    
 	print_r($tweets)
 
-Followers :
+Followers : [Check Here](https://dev.twitter.com/rest/reference/get/followers/list)
 
-[Check Here](https://dev.twitter.com/rest/reference/get/followers/list)
 	$followers_list = $connection->get('followers/list', ['screen_name' => 'any name']);
   	print_r($followers_list)
 
-Public Users :
+Public Users : [Check Here](https://dev.twitter.com/rest/reference/get/users/search)
 
-[Check Here](https://dev.twitter.com/rest/reference/get/users/search)
 	$users = $connection->get('users/search', array('q' => 'any username or pagename'));
   	print_r($users)
 
