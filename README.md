@@ -1,12 +1,10 @@
 # Twitter-App
 
-***
-
 ![Twitter-App Logo](/dist/images/if_twitter_313634.png)
 
 Documentation
 
-***
+------------------
 
 * [An Introduction](https://github.com/shwetadanej/Twitter-App)
 * [Authentication](https://github.com/shwetadanej/Twitter-App/blob/master/callback.php)
@@ -18,7 +16,7 @@ Documentation
 
 Examples :
 
-***
+------------------
 
 1. [First Create a New App for twitter](https://apps.twitter.com/)  
 2. Import Twitter Api [https://github.com/abraham/twitteroauth](https://github.com/abraham/twitteroauth)
