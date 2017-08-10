@@ -1,6 +1,4 @@
-|LOGO|
-
-.. |LOGO| image:: https://github.com/shwetadanej/Twitter-App/blob/master/dist/images/if_twitter_313634.png 
+|LOGO| # Twitter-App
 
 Documentation
 -------------
