@@ -1,11 +1,75 @@
 # Twitter-App
 
-### Twitter Authentication
+![Twitter-App Logo](/dist/images/if_twitter_313634.png)
 
-### It Displays "Home Timeline Tweets" as well as "User Timeline Tweets"
+Documentation
+-------------
+* [An Introduction](https://github.com/shwetadanej/Twitter-App)
+* [Authentication](https://github.com/shwetadanej/Twitter-App/blob/master/callback.php)
+* [Home Tweets](https://github.com/shwetadanej/Twitter-App/blob/master/homeTweets.php)
+* [User Tweets](https://github.com/shwetadanej/Twitter-App/blob/master/userTweets.php)
+* [Followers](https://github.com/shwetadanej/Twitter-App/blob/master/home.php)
+* [Search Public Users](https://github.com/shwetadanej/Twitter-App/blob/master/publicSearch.php)
+* [Download Tweets](https://github.com/shwetadanej/Twitter-App/blob/master/downloadTweets.php)
 
-### Displaying Followers
+Some Example
+------------
 
-### Searching of followers using autocomplete
+First, authenticate with your application credentials:
 
-### Download Tweets 
+	from TwitterAPI import TwitterAPI
+	api = TwitterAPI(consumer_key, consumer_secret, access_token_key, access_token_secret)
+
+Home Tweets:
+
+	$tweets = $connection->get('statuses/home_timeline', ['count' => 50, 'exclude_replies' => true, 'screen_name' => 'any name', 'include_rts' => false]);
+	print_r($tweets)
+
+User Tweets:
+
+	$tweets = $connection->get('statuses/user_timeline', ['count' => 50, 'exclude_replies' => true, 'screen_name' => 'any name', 'include_rts' => false]);    
+	print_r($tweets)
+
+Followers :
+
+	$followers_list = $connection->get('followers/list', ['screen_name' => 'any name']);
+  	print_r($followers_list)
+
+Public Users :
+
+	$users = $connection->get('users/search', array('q' => 'any username or pagename'));
+  	print_r($users)
+
+Download Tweets in diff formats:
+
+	Json :
+
+        $fp = fopen("tweets.json", "w");
+        fwrite($fp, json_encode($tweets_data));
+        fclose($fp);
+        header('Content-Type: application/json');
+        header('Content-Disposition: attachment; filename=' . basename('tweets.json'));
+        header('Expires: 0');
+        header('Cache-Control: must-revalidate');
+        header('Pragma: public');
+        header('Content-Length: ' . filesize('tweets.json'));
+        readfile('tweets.json');
+        ignore_user_abort(true);
+        unlink('tweets.json');
+        exit();
+
+  
+	CSV :
+
+        header('Content-Disposition: attachment; filename="tweets.csv";');
+        header("Pragma: no-cache");
+        header("Expires: 0");
+        $fp = fopen('tweets.csv', 'w');
+        foreach ($tweets_data as $fields) {
+            fputcsv($fp, $fields);
+        }
+        fclose($fp);
+        readfile('tweets.csv');
+        ignore_user_abort(true);
+        unlink('tweets.csv');
+        exit();
