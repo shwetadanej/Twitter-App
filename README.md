@@ -3,13 +3,13 @@
 
 Documentation
 -------------
-* `[An Introduction](https://github.com/shwetadanej/Twitter-App)`
-* `[Authentication](https://github.com/shwetadanej/Twitter-App/blob/master/callback.php)`
-* `[Home Tweets](https://github.com/shwetadanej/Twitter-App/blob/master/homeTweets.php)`
-* `[User Tweets](https://github.com/shwetadanej/Twitter-App/blob/master/userTweets.php)`
-* `[Followers](https://github.com/shwetadanej/Twitter-App/blob/master/home.php)`
-* `[Search Public Users](https://github.com/shwetadanej/Twitter-App/blob/master/publicSearch.php)`
-* `[Download Tweets](https://github.com/shwetadanej/Twitter-App/blob/master/downloadTweets.php)`
+* [An Introduction](https://github.com/shwetadanej/Twitter-App)
+* [Authentication](https://github.com/shwetadanej/Twitter-App/blob/master/callback.php)
+* [Home Tweets](https://github.com/shwetadanej/Twitter-App/blob/master/homeTweets.php)
+* [User Tweets](https://github.com/shwetadanej/Twitter-App/blob/master/userTweets.php)
+* [Followers](https://github.com/shwetadanej/Twitter-App/blob/master/home.php)
+* [Search Public Users](https://github.com/shwetadanej/Twitter-App/blob/master/publicSearch.php)
+* [Download Tweets](https://github.com/shwetadanej/Twitter-App/blob/master/downloadTweets.php)
 
 Some Example
 ------------
