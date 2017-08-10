@@ -30,10 +30,15 @@ User Tweets:
 	$tweets = $connection->get('statuses/user_timeline', ['count' => 50, 'exclude_replies' => true, 'screen_name' => 'any name', 'include_rts' => false]);    
 	print_r($tweets)
 
-Followers List:
+Followers :
 
-	$followers_list = $connection->get('followers/list', ['screen_name' => $loggedIn_user,]);
+	$followers_list = $connection->get('followers/list', ['screen_name' => 'any name']);
   	print_r($followers_list)
+
+Public Users :
+
+	$users = $connection->get('users/search', array('q' => 'any username or pagename'));
+  	print_r($users)
 
 Download Tweets in diff formats:
 
