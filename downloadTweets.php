@@ -75,37 +75,43 @@ if (!isset($_SESSION['access_token'])) {
 
     $u_name = $_REQUEST['uname'];
     if (isset($u_name)) {
-        $tweets = $connection->get('statuses/user_timeline', ['count' => 200, 'exclude_replies' => true, 'screen_name' => $u_name, 'include_rts' => false]);
-        $totalTweets[] = $tweets;
-        $tweets_data = [];
+        $data = array();
+        $totalData = array();
+        $content = $connection->get('statuses/user_timeline', array(
+            'count' => 200, 'exclude_replies' => true, 'screen_name' => $u_name, 'include_rts' => false
+        ));
 
-        for ($count = 1; $count <= 195; $count ++) {
-            foreach ($totalTweets as $items) {
-                $data['user_screen_name'] = $items[$count]->user->screen_name;
-                $data['user_name'] = $items[$count]->user->name;
-                $data['verified'] = $items[$count]->user->verified;
-                $data['user_profile_image'] = $items[$count]->user->profile_image_url;
-                $tweet_text = $items[$count]->text;
-                $tweet_text = preg_replace('@(https?://([-\w\.]+)+(/([\w/_\.]*(\?\S+)?(#\S+)?)?)?)@', '<a href="$1">$1</a>', $tweet_text);
-                $tweet_text = preg_replace('/@(\w+)/', '<a href="http://twitter.com/$1">@$1</a>', $tweet_text);
-                $tweet_text = preg_replace('/\s+#(\w+)/', ' <a href="http://search.twitter.com/search?q=%23$1">#$1</a>', $tweet_text);
-                $data['tweet_text'] = $tweet_text;
-                $tweets_data[] = $data;
+        $x = 0;
+        while ($x < 15) {
+            $text = array();
+
+            foreach ($content as $tweet) {
+                $text[] = $tweet->id_str;
             }
-        }
 
-        $fp = fopen("user_tweets.json", "w");
-        fwrite($fp, json_encode($tweets_data));
+            $last_tweet = end($text);
+
+            $content = $connection->get('statuses/user_timeline', array(
+                'count' => 200, 'exclude_replies' => true, 'screen_name' => $u_name, 'include_rts' => false, 'max_id' => $last_tweet
+            ));
+            foreach ($content as $tweet) {
+                $data['tweet_text'] = $tweet->text;
+                $totalData[] = $data;
+            }
+            $x++;
+        }
+        $f_name = "tweets_of_".$u_name.".csv";
+        header('Content-Disposition: attachment; filename='.$f_name);
+        header("Pragma: no-cache");
+        header("Expires: 0");
+        $fp = fopen($f_name, 'w');
+        foreach ($totalData as $fields) {
+            fputcsv($fp, $fields);
+        }
         fclose($fp);
-        header('Content-Type: application/json');
-        header('Content-Disposition: attachment; filename=' . basename('user_tweets.json'));
-        header('Expires: 0');
-        header('Cache-Control: must-revalidate');
-        header('Pragma: public');
-        header('Content-Length: ' . filesize('user_tweets.json'));
-        readfile('user_tweets.json');
+        readfile($f_name);
         ignore_user_abort(true);
-        unlink('user_tweets.json');
+        unlink($f_name);
         exit();
     }
 }
