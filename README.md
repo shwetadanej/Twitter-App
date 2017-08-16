@@ -79,3 +79,12 @@ Download Tweets in diff formats:
         ignore_user_abort(true);
         unlink('tweets.csv');
         exit();
+        
+        PDF : I have Used FPDF library for pdf format
+
+        For more info , check out the below given link
+        [FPDF Download](http://www.fpdf.org/)
+        
+        
+        
+        
