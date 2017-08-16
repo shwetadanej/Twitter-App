@@ -96,7 +96,7 @@ function getUserTweets(userScreenName) {
     if ($("#download_link").length > 0) {
         $("#download_link").remove();
     }
-    var dlink = '<a href="downloadTweets.php?uname=' + userScreenName + '"  id="download_link" target="_blank"><img src="dist/images/download_tweets.png" alt="Download Tweets" title="Download Tweets" style="float: right"/></a>';
+    var dlink = '<a href="downloadTweets.php?uname=' + userScreenName + '"  id="download_link" target="_blank"><img src="dist/images/download_tweets.png" alt="Download Tweets of ' + userScreenName + '" title="Download Tweets of ' + userScreenName + '" style="float: right"/></a>';
     $("#download_tweets").append(dlink);
     $.ajax({
         type: "POST",

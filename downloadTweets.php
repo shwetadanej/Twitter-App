@@ -3,6 +3,7 @@
 session_start();
 require 'autoload.php';
 require 'config.php';
+require 'lib/fpdf.php';
 
 use Abraham\TwitterOAuth\TwitterOAuth;
 
@@ -100,17 +101,36 @@ if (!isset($_SESSION['access_token'])) {
             }
             $x++;
         }
-        $f_name = "tweets_of_".$u_name.".csv";
-        header('Content-Disposition: attachment; filename='.$f_name);
-        header("Pragma: no-cache");
-        header("Expires: 0");
+
+        $f_name = "tweets_of_" . $u_name . ".pdf";
+        $title = "Tweets of " . $u_name;
         $fp = fopen($f_name, 'w');
-        foreach ($totalData as $fields) {
-            fputcsv($fp, $fields);
+
+        $pdf = new FPDF();
+        $pdf->AddPage();
+        $pdf->SetTitle($title);
+        $pdf->Cell(80);
+        $pdf->SetFont('Times', 'B', 16);
+        $pdf->Cell(30, 10, $title, 0, 0, 'C');
+        $pdf->Ln(20);
+
+        $i = 1;
+        foreach ($totalData as $val) {
+            $tweet = $i . ") " . $val['tweet_text'];
+            $pdf->SetFont('Times', '', 12);
+            $pdf->MultiCell(190, 5, $tweet, 0);
+            $pdf->Ln(7);
+            $i++;
         }
+
+        $pdf->Output();
+        header("Content-Disposition: attachment; filename=" . urlencode($f_name));
+        header("Content-Type: application/octet-stream");
+        header("Content-Type: application/download");
+        header("Content-Description: File Transfer");
+        header("Content-Length: " . filesize($f_name));
         fclose($fp);
         readfile($f_name);
-        ignore_user_abort(true);
         unlink($f_name);
         exit();
     }
