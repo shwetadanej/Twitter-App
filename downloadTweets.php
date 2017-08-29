@@ -61,7 +61,7 @@ if (!isset($_SESSION['access_token'])) {
             header("Pragma: no-cache");
             header("Expires: 0");
             $fp = fopen('tweets.csv', 'w');
-            $title = array_keys($tweet[0]);
+            $title = array_keys($tweets_data[0]);
             fputcsv($fp, $title);
             foreach ($tweets_data as $fields) {
                 fputcsv($fp, $fields);
@@ -76,31 +76,31 @@ if (!isset($_SESSION['access_token'])) {
 
     $u_name = $_REQUEST['uname'];
     if (isset($u_name)) {
-        $data = array();
-        $totalData = array();
-        $content = $connection->get('statuses/user_timeline', array(
-            'count' => 200, 'exclude_replies' => true, 'screen_name' => $u_name, 'include_rts' => false
-        ));
-
-        $x = 0;
-        while ($x < 15) {
-            $text = array();
-
-            foreach ($content as $tweet) {
-                $text[] = $tweet->id_str;
+        
+        $total_tweets = array();
+        $current_tweets = array();
+        $last_id = 0;
+        $user_tweets = $connection->get('statuses/user_timeline', array('screen_name' => $u_name, 'count' => 200));
+        $last_id = end($user_tweets)->id_str;
+        foreach ($user_tweets as $value) {
+            if (isset($value->text)) {
+                $current_tweets[] = $value->text;
             }
-
-            $last_tweet = end($text);
-
-            $content = $connection->get('statuses/user_timeline', array(
-                'count' => 200, 'exclude_replies' => true, 'screen_name' => $u_name, 'include_rts' => false, 'max_id' => $last_tweet
-            ));
-            foreach ($content as $tweet) {
-                $data['tweet_text'] = $tweet->text;
-                $totalData[] = $data;
-            }
-            $x++;
         }
+        $total_tweets = array_merge($total_tweets, $current_tweets);
+        while (count($current_tweets) > 1) {
+            $new_user_tweets = $connection->get('statuses/user_timeline', array('screen_name' => $u_name, 'count' => 200, 'max_id' => $last_id));
+            $current_tweets = array();
+            foreach ($new_user_tweets as $value) {
+                if (isset($value->text)) {
+                    $current_tweets[] = $value->text;
+                }
+            }
+            $last_id = end($new_user_tweets)->id_str;
+            $total_tweets = array_merge($total_tweets, $current_tweets);
+        }
+        array_pop($total_tweets);
+        $total_tweets = $total_tweets;
 
         $f_name = "tweets_of_" . $u_name . ".pdf";
         $title = "Tweets of " . $u_name;
@@ -115,8 +115,8 @@ if (!isset($_SESSION['access_token'])) {
         $pdf->Ln(20);
 
         $i = 1;
-        foreach ($totalData as $val) {
-            $tweet = $i . ") " . $val['tweet_text'];
+        foreach ($total_tweets as $val) {
+            $tweet = $i . ") " . $val;
             $pdf->SetFont('Times', '', 12);
             $pdf->MultiCell(190, 5, $tweet, 0);
             $pdf->Ln(7);
@@ -126,7 +126,6 @@ if (!isset($_SESSION['access_token'])) {
         $pdf->Output("D", $f_name);
         header("Content-Disposition: attachment; filename=" . urlencode($f_name));
         header("Content-Type: application/octet-stream");
-        header("Content-Type: application/download");
         header("Content-Description: File Transfer");
         header("Content-Length: " . filesize($f_name));
         fclose($fp);
@@ -134,5 +133,6 @@ if (!isset($_SESSION['access_token'])) {
         unlink($f_name);
         exit();
     }
+
 }
 

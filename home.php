@@ -17,6 +17,11 @@ if (!isset($_SESSION['access_token'])) {
     $connection = new TwitterOAuth(CONSUMER_KEY, CONSUMER_SECRET, $access_token['oauth_token'], $access_token['oauth_token_secret']);
     $user = $connection->get("account/verify_credentials");
     $loggedIn_user = $user->screen_name;
+
+    if (isset($_REQUEST['logout'])) {
+        session_destroy();
+        header('Location: http://beta.technonic.in/TwitterApp/index.php');
+    }
     ?>
 
     <!DOCTYPE html>
@@ -41,12 +46,12 @@ if (!isset($_SESSION['access_token'])) {
             <div class="navbar navbar-dark bg-dark">
                 <div class="container d-flex justify-content-between">
                     <img src="<?php echo $user->profile_image_url; ?>" id="loggedinProfile" style="border-radius: 50%;"/>
-                    <a href="javascript:void(0);" class="navbar-brand" style="margin-right: 55%;"><?php echo "@" . $loggedIn_user; ?> </a>
+                    <a href="" class="navbar-brand" style="margin-right: 55%;"><?php echo "@" . $loggedIn_user; ?> </a>
 
                     <form class="form-inline mt-2 mt-md-0" name="publicSearch"> 
                         <input class="form-control mr-sm-2 ui-autocomplete-input" type="text" name="searchPublic" id="searchPublic" placeholder="Search Twitter" >
                     </form>
-                    <a href='logout.php' class="navbar-brand" style="text-align: right;">
+                    <a href='home.php?logout=yes' class="navbar-brand" style="text-align: right;">
                         <img src="dist/images/logout.png" />
                     </a>
 
@@ -131,9 +136,9 @@ if (!isset($_SESSION['access_token'])) {
             <script src="dist/js/ie10-viewport-bug-workaround.js" type="text/javascript"></script>
             <script>
 
-                        $(function () {
-                            Holder.addTheme("thumb", {background: "#55595c", foreground: "#eceeef", text: "Thumbnail"});
-                        });
+                $(function () {
+                    Holder.addTheme("thumb", {background: "#55595c", foreground: "#eceeef", text: "Thumbnail"});
+                });
             </script>
             <script src="dist/js/functions.js" type="text/javascript"></script>
         </body>
