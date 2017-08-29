@@ -30,8 +30,6 @@ if (!isset($_SESSION['access_token'])) {
             foreach ($totalTweets as $items) {
                 $data['user_screen_name'] = $items[$count]->user->screen_name;
                 $data['user_name'] = $items[$count]->user->name;
-                $data['verified'] = $items[$count]->user->verified;
-                $data['user_profile_image'] = $items[$count]->user->profile_image_url;
                 $tweet_text = $items[$count]->text;
                 $tweet_text = preg_replace('@(https?://([-\w\.]+)+(/([\w/_\.]*(\?\S+)?(#\S+)?)?)?)@', '<a href="$1">$1</a>', $tweet_text);
                 $tweet_text = preg_replace('/@(\w+)/', '<a href="http://twitter.com/$1">@$1</a>', $tweet_text);
@@ -123,7 +121,7 @@ if (!isset($_SESSION['access_token'])) {
             $i++;
         }
 
-        $pdf->Output();
+        $pdf->Output("D" ,$f_name);
         header("Content-Disposition: attachment; filename=" . urlencode($f_name));
         header("Content-Type: application/octet-stream");
         header("Content-Type: application/download");
