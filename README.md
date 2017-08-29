@@ -2,9 +2,7 @@
 
 ![Twitter-App Logo](/dist/images/if_twitter_313634.png)
 
-## Documentation
-
-* [An Introduction](https://github.com/shwetadanej/Twitter-App)
+## Introduction
 
 This web application is made in the interest of, 
 
@@ -14,6 +12,8 @@ This web application is made in the interest of,
 4. displaying their tweets 
 5. as well as downloading their tweets up to 3200 in 3 formats like CSV, JSON, PDF.
 
+
+## Documentation
 
 * [Authentication](https://github.com/shwetadanej/Twitter-App/blob/master/callback.php)
 * [Home Tweets](https://github.com/shwetadanej/Twitter-App/blob/master/homeTweets.php)
