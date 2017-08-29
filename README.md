@@ -5,6 +5,15 @@
 ## Documentation
 
 * [An Introduction](https://github.com/shwetadanej/Twitter-App)
+
+This web application is made in the interest of, 
+
+1 : getting logged in user's home tweets 
+2 : show their 10 random followers
+3 : search twitter users and 
+4 : displaying their tweets 
+5 : as well as downloading their tweets up to 3200 in 3 formats like CSV, JSON, PDF.
+
 * [Authentication](https://github.com/shwetadanej/Twitter-App/blob/master/callback.php)
 * [Home Tweets](https://github.com/shwetadanej/Twitter-App/blob/master/homeTweets.php)
 * [User Tweets](https://github.com/shwetadanej/Twitter-App/blob/master/userTweets.php)
@@ -13,7 +22,7 @@
 * [Download Tweets](https://github.com/shwetadanej/Twitter-App/blob/master/downloadTweets.php)
 
 
-## Examples :
+## Examples
 
 1. [First Create a New App for twitter](https://apps.twitter.com/)  
 2. Import Twitter Api [https://github.com/abraham/twitteroauth](https://github.com/abraham/twitteroauth)
