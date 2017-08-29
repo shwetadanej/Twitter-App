@@ -93,6 +93,13 @@ Download Tweets in diff formats:
 Added PDF download for user tweets : [Check Here](http://www.fpdf.org/)
 
         I have used FPDF library , check out above given link for more info.
-	        
-        
-        
+
+
+## Created By
+
+**Shweta Danej**
+
+[Stackoverflow Profile](https://stackoverflow.com/users/6375123/shweta-danej?tab=profile)
+[Twitter Profile](https://twitter.com/shweta_danej)
+[Facebook Profile](https://www.facebook.com/shweta.danej)
+
