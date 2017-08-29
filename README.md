@@ -56,40 +56,8 @@ Public Users : [Check Here](https://dev.twitter.com/rest/reference/get/users/sea
 	$users = $connection->get('users/search', array('q' => 'any username or pagename'));
   	print_r($users)
 
-Download Tweets in diff formats:
 
-	Json :
-
-        $fp = fopen("tweets.json", "w");
-        fwrite($fp, json_encode($tweets_data));
-        fclose($fp);
-        header('Content-Type: application/json');
-        header('Content-Disposition: attachment; filename=' . basename('tweets.json'));
-        header('Expires: 0');
-        header('Cache-Control: must-revalidate');
-        header('Pragma: public');
-        header('Content-Length: ' . filesize('tweets.json'));
-        readfile('tweets.json');
-        ignore_user_abort(true);
-        unlink('tweets.json');
-        exit();
-
-  
-	CSV :
-
-        header('Content-Disposition: attachment; filename="tweets.csv";');
-        header("Pragma: no-cache");
-        header("Expires: 0");
-        $fp = fopen('tweets.csv', 'w');
-        foreach ($tweets_data as $fields) {
-            fputcsv($fp, $fields);
-        }
-        fclose($fp);
-        readfile('tweets.csv');
-        ignore_user_abort(true);
-        unlink('tweets.csv');
-        exit();
-       
+      
 Added PDF download for user tweets : [Check Here](http://www.fpdf.org/)
 
         I have used FPDF library , check out above given link for more info.
@@ -100,6 +68,8 @@ Added PDF download for user tweets : [Check Here](http://www.fpdf.org/)
 **Shweta Danej**
 
 [Stackoverflow Profile](https://stackoverflow.com/users/6375123/shweta-danej?tab=profile)
+
 [Twitter Profile](https://twitter.com/shweta_danej)
+
 [Facebook Profile](https://www.facebook.com/shweta.danej)
 
