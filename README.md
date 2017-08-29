@@ -6,11 +6,12 @@
 
 This web application is made in the interest of, 
 
-1. getting logged in user's home tweets 
-2. show their 10 random followers
-3. search twitter users and 
-4. displaying their tweets 
-5. as well as downloading their tweets up to 3200 in 3 formats like CSV, JSON, PDF.
+1. getting logged in 
+2. user's home tweets 
+3. show their 10 random followers
+4. search twitter users and 
+5. displaying their tweets 
+6. as well as downloading their tweets up to 3200 in 3 formats like CSV, JSON, PDF.
 
 
 ## Documentation
