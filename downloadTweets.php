@@ -61,6 +61,8 @@ if (!isset($_SESSION['access_token'])) {
             header("Pragma: no-cache");
             header("Expires: 0");
             $fp = fopen('tweets.csv', 'w');
+            $title = array_keys($tweet[0]);
+            fputcsv($fp, $title);
             foreach ($tweets_data as $fields) {
                 fputcsv($fp, $fields);
             }
@@ -121,7 +123,7 @@ if (!isset($_SESSION['access_token'])) {
             $i++;
         }
 
-        $pdf->Output("D" ,$f_name);
+        $pdf->Output("D", $f_name);
         header("Content-Disposition: attachment; filename=" . urlencode($f_name));
         header("Content-Type: application/octet-stream");
         header("Content-Type: application/download");
