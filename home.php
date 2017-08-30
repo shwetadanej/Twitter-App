@@ -98,15 +98,21 @@ if (!isset($_SESSION['access_token'])) {
                         </div>
                         <br><br>
                     </div>
-
-
+                    
                     <div class="row"> 
                         <div class="col-12">
                             <h3 class="task_title">Download Tweets As</h3>
                             <div class="col-12">
                                 <center>
-                                    <a class="btn btn-primary" href="downloadTweets.php?dType=json&download_home_tweets=yes" role="button" target="_blank">JSON</a>
-                                    <a class="btn btn-primary" href="downloadTweets.php?dType=csv&download_home_tweets=yes" role="button" target="_blank">CSV</a>
+                                    <a  href="downloadTweets.php?dType=json&download_home_tweets=yes"  target="_blank">
+                                        <img src="dist/images/json-file.png" alt=""/>
+                                    </a>
+                                    <a  href="downloadTweets.php?dType=csv&download_home_tweets=yes"  target="_blank">
+                                        <img src="dist/images/csv.png">
+                                    </a>
+                                    <a  href="downloadTweets.php?dType=pdf&download_home_tweets=yes"  target="_blank">
+                                        <img src="dist/images/pdf.png">
+                                    </a>
                                 </center> 
                             </div>
                         </div>
