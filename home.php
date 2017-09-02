@@ -16,7 +16,7 @@ if (!isset($_SESSION['access_token'])) {
     $access_token = $_SESSION['access_token'];
     $connection = new TwitterOAuth(CONSUMER_KEY, CONSUMER_SECRET, $access_token['oauth_token'], $access_token['oauth_token_secret']);
     $user = $connection->get("account/verify_credentials");
-    $loggedIn_user = $user->screen_name;
+    $_SESSION["loggedIn_user"] = $user->screen_name;
 
     if (isset($_REQUEST['logout'])) {
         session_destroy();
@@ -46,7 +46,7 @@ if (!isset($_SESSION['access_token'])) {
             <div class="navbar navbar-dark bg-dark">
                 <div class="container d-flex justify-content-between">
                     <img src="<?php echo $user->profile_image_url; ?>" id="loggedinProfile" style="border-radius: 50%;"/>
-                    <a href="" class="navbar-brand" style="margin-right: 55%;"><?php echo "@" . $loggedIn_user; ?> </a>
+                    <a href="" class="navbar-brand" style="margin-right: 55%;"><?php echo "@" . $_SESSION["loggedIn_user"]; ?> </a>
 
                     <form class="form-inline mt-2 mt-md-0" name="publicSearch"> 
                         <input class="form-control mr-sm-2 ui-autocomplete-input" type="text" name="searchPublic" id="searchPublic" placeholder="Search Twitter" >
@@ -79,7 +79,7 @@ if (!isset($_SESSION['access_token'])) {
                         <div id="wrapper" class="square">
 
                             <?php
-                            $followers_list = $connection->get('followers/list', ['screen_name' => $loggedIn_user,]);
+                            $followers_list = $connection->get('followers/list', ['screen_name' => $_SESSION["loggedIn_user"]]);
                             $followers = $followers_list->users;
                             $c = count($followers);
                             $c = $c <= 9 ? $c = $c - 1 : $c = 9;
@@ -104,14 +104,14 @@ if (!isset($_SESSION['access_token'])) {
                             <h3 class="task_title">Download Tweets As</h3>
                             <div class="col-12">
                                 <center>
-                                    <a  href="downloadTweets.php?dType=json&download_home_tweets=yes"  target="_blank">
-                                        <img src="dist/images/json-file.png" alt=""/>
+                                    <a  href="downloadTweets.php?dType=json&download_home_tweets=yes"  target="_blank" class="downloadAs">
+                                        <img src="dist/images/json-file.png" alt="Download as JSON" title="Download as JSON"/>
                                     </a>
-                                    <a  href="downloadTweets.php?dType=csv&download_home_tweets=yes"  target="_blank">
-                                        <img src="dist/images/csv.png">
+                                    <a  href="downloadTweets.php?dType=csv&download_home_tweets=yes"  target="_blank" class="downloadAs">
+                                        <img src="dist/images/csv.png" alt="Download as CSV" title="Download as CSV">
                                     </a>
-                                    <a  href="downloadTweets.php?dType=pdf&download_home_tweets=yes"  target="_blank">
-                                        <img src="dist/images/pdf.png">
+                                    <a  href="downloadTweets.php?dType=pdf&download_home_tweets=yes"  target="_blank" class="downloadAs">
+                                        <img src="dist/images/pdf.png" alt="Download as PDF" title="Download as PDF">
                                     </a>
                                 </center> 
                             </div>
