@@ -1,6 +1,6 @@
 # Twitter-App
 
-![Twitter-App Logo](/dist/images/if_twitter_313634.png)
+![Twitter-App Logo](/dist/images/Login_to_twitter.png)
 
 ## Introduction
 

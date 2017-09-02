@@ -85,3 +85,6 @@ footer p a {
 .ui-state-focus{
     border: none !important;
 }
+.downloadAs:hover{
+    text-decoration: none;
+}

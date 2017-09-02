@@ -75,6 +75,7 @@ if (!isset($_SESSION['access_token'])) {
         } 
         else if ($type == "csv") {
             $fName = "csv_home_tweets" . time() . ".csv";
+            header("Content-type: text/csv");
             header('Content-Disposition: attachment; filename=' . $fName);
             header("Pragma: no-cache");
             header("Expires: 0");
