@@ -49,7 +49,7 @@ function getHomeTweets() {
         url: 'homeTweets.php',
         success: function (data) {
             var home_tweets = $.parseJSON(data);
-            $("#tweets_title").html("Recent Tweets");            
+            $("#tweets_title").html("Recent Tweets");
             $.each(home_tweets, function (index, element) {
                 var li = "<li>";
                 li += "<table><tr><td>";

@@ -24,36 +24,16 @@ if (!isset($_SESSION['access_token'])) {
 
     if (isset($_REQUEST['download_home_tweets'])) {
         $total_tweets = array();
-        $current_tweets = array();
         $data = array();
-        $last_id = 0;
         $home_tweets = $connection->get('statuses/home_timeline', array('screen_name' => $loggedIn_user, 'count' => 200));
-        $last_id = end($home_tweets)->id_str;
         foreach ($home_tweets as $value) {
             if (isset($value->text)) {
                 $data['user_screen_name'] = $value->user->screen_name;
                 $data['user_name'] = $value->user->name;
                 $data['tweet_text'] = $value->text;
-                $current_tweets[] = $data;
+                $total_tweets[] = $data;
             }
         }
-        $total_tweets = array_merge($total_tweets, $current_tweets);
-        while (count($current_tweets) > 1) {
-            $new_home_tweets = $connection->get('statuses/home_timeline', array('screen_name' => $loggedIn_user, 'count' => 200, 'max_id' => $last_id));
-            $current_tweets = array();
-            foreach ($new_home_tweets as $value) {
-                if (isset($value->text)) {
-                    $data['user_screen_name'] = $value->user->screen_name;
-                    $data['user_name'] = $value->user->name;
-                    $data['tweet_text'] = $value->text;
-                    $current_tweets[] = $data;
-                }
-            }
-            $last_id = end($new_home_tweets)->id_str;
-            $total_tweets = array_merge($total_tweets, $current_tweets);
-        }
-        array_pop($total_tweets);
-        $total_tweets = $total_tweets;
         $type = $_REQUEST["dType"];
 
         if ($type == "json") {
