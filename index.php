@@ -27,4 +27,3 @@ if ($_SESSION['loggedIn_user']) {
     <script src = "dist/js/ie10-viewport-bug-workaround.js"></script>
 </body>
 </html>
-
